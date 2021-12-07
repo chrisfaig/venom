@@ -11,6 +11,13 @@ controller_1 = lewansoul_lx16a.ServoController(
 )
 
 
+SERIAL_PORT_2 = '/dev/ttyUSB1'
+
+controller_2 = lewansoul_lx16a.ServoController(
+    serial.Serial(SERIAL_PORT_2, 115200, timeout=1),
+)
+
+
 # Constante
 _coxa = 6.5
 _femour = 7.5
@@ -61,18 +68,125 @@ def moveLeg(perna, _teta, _alpha, _beta ) :
         coxa_servo.move_prepare(_teta)
         controller_1.move_start()
 
-        _alpha = (180 - _teta)/0.24
+        _alpha = (180 - _alpha)/0.24
         print ('Perna ', perna, ' Femour_Servo ', _alpha)
         femour_servo.move_prepare(_alpha)
         controller_1.move_start()
 
-        _beta = (180 - _teta)/0.24
+        _beta = (180 - _beta)/0.24
+        print ('Perna ', perna, ' Tibia_Servo ', _beta)
+        tibia_servo.move_prepare(_beta)
+        controller_1.move_start()
+
+    if perna == 4 :
+        coxa_servo = controller_1.servo(10)
+        femour_servo = controller_1.servo(11)
+        tibia_servo = controller_1.servo(12)
+        _teta = (180 - _teta)/0.24
+        print ('Perna ', perna, ' Coxa_Servo ', _teta)
+        coxa_servo.move_prepare(_teta)
+        controller_1.move_start()
+
+        _alpha = (180 - _alpha)/0.24
+        print ('Perna ', perna, ' Femour_Servo ', _alpha)
+        femour_servo.move_prepare(_alpha)
+        controller_1.move_start()
+
+        _beta = (180 - _beta)/0.24
         print ('Perna ', perna, ' Tibia_Servo ', _beta)
         tibia_servo.move_prepare(_beta)
         controller_1.move_start()
 
 
-_teta , _alpha, _beta = _ik(1,14,10)
+    if perna == 6 :
+        coxa_servo = controller_1.servo(16)
+        femour_servo = controller_1.servo(17)
+        tibia_servo = controller_1.servo(18)
+        _teta = (180 - _teta)/0.24
+        print ('Perna ', perna, ' Coxa_Servo ', _teta)
+        coxa_servo.move_prepare(_teta)
+        controller_1.move_start()
 
+        _alpha = (180 - _alpha)/0.24
+        print ('Perna ', perna, ' Femour_Servo ', _alpha)
+        femour_servo.move_prepare(_alpha)
+        controller_1.move_start()
+
+        _beta = (180 - _beta)/0.24
+        print ('Perna ', perna, ' Tibia_Servo ', _beta)
+        tibia_servo.move_prepare(_beta)
+        controller_1.move_start()
+
+
+
+    if perna == 1 :
+        coxa_servo = controller_2.servo(1)
+        femour_servo = controller_2.servo(2)
+        tibia_servo = controller_2.servo(3)
+        _teta = (180 - _teta)/0.24
+        print ('Perna ', perna, ' Coxa_Servo ', _teta)
+        coxa_servo.move_prepare(_teta)
+        controller_2.move_start()
+
+        _alpha = (180 - _alpha)/0.24
+        print ('Perna ', perna, ' Femour_Servo ', _alpha)
+        femour_servo.move_prepare(_alpha)
+        controller_2.move_start()
+
+        _beta = (180 - _beta)/0.24
+        print ('Perna ', perna, ' Tibia_Servo ', _beta)
+        tibia_servo.move_prepare(_beta)
+        controller_2.move_start()
+
+    if perna == 3 :
+        coxa_servo = controller_2.servo(7)
+        femour_servo = controller_2.servo(8)
+        tibia_servo = controller_2.servo(9)
+        _teta = (180 - _teta)/0.24
+        print ('Perna ', perna, ' Coxa_Servo ', _teta)
+        coxa_servo.move_prepare(_teta)
+        controller_2.move_start()
+
+        _alpha = (180 - _alpha)/0.24
+        print ('Perna ', perna, ' Femour_Servo ', _alpha)
+        femour_servo.move_prepare(_alpha)
+        controller_2.move_start()
+
+        _beta = (180 - _beta)/0.24
+        print ('Perna ', perna, ' Tibia_Servo ', _beta)
+        tibia_servo.move_prepare(_beta)
+        controller_2.move_start()
+
+
+    if perna == 5 :
+        coxa_servo = controller_2.servo(13)
+        femour_servo = controller_2.servo(14)
+        tibia_servo = controller_2.servo(15)
+        _teta = (180 - _teta)/0.24
+        print ('Perna ', perna, ' Coxa_Servo ', _teta)
+        coxa_servo.move_prepare(_teta)
+        controller_2.move_start()
+
+        _alpha = (180 - _alpha)/0.24
+        print ('Perna ', perna, ' Femour_Servo ', _alpha)
+        femour_servo.move_prepare(_alpha)
+        controller_2.move_start()
+
+        _beta = (180 - _beta)/0.24
+        print ('Perna ', perna, ' Tibia_Servo ', _beta)
+        tibia_servo.move_prepare(_beta)
+        controller_2.move_start()
+
+_teta , _alpha, _beta = _ik(6,12,6)
+
+
+moveLeg(1,_teta,_alpha,_beta)
 moveLeg(2,_teta,_alpha,_beta)
+
+moveLeg(3,_teta,_alpha,_beta)
+moveLeg(4,_teta,_alpha,_beta)
+
+moveLeg(5,_teta,_alpha,_beta)
+moveLeg(6,_teta,_alpha,_beta)
+
 
