@@ -56,16 +56,18 @@ def _ik (_posX, _posY, _zOffset) :
 
     return _teta, _alpha, _beta
 
-
-def moveLeg(perna, _teta, _alpha, _beta ) :
+def moveLeg(perna, _angCoxa,  _teta, _alpha, _beta ) :
 
     if perna == 2 :
         coxa_servo = controller_1.servo(4)
         femour_servo = controller_1.servo(5)
         tibia_servo = controller_1.servo(6)
-        _teta = (180 - _teta)/0.24
-        print ('Perna ', perna, ' Coxa_Servo ', _teta)
-        coxa_servo.move_prepare(_teta)
+ 
+
+        _angCoxa = _angCoxa /0.24
+        print ('Perna ', perna, ' Coxa_Servo ', _angCoxa)
+        coxa_servo.move_prepare(_angCoxa)
+
         controller_1.move_start()
 
         _alpha = (180 - _alpha)/0.24
@@ -77,14 +79,15 @@ def moveLeg(perna, _teta, _alpha, _beta ) :
         print ('Perna ', perna, ' Tibia_Servo ', _beta)
         tibia_servo.move_prepare(_beta)
         controller_1.move_start()
-
     if perna == 4 :
         coxa_servo = controller_1.servo(10)
         femour_servo = controller_1.servo(11)
         tibia_servo = controller_1.servo(12)
-        _teta = (180 - _teta)/0.24
-        print ('Perna ', perna, ' Coxa_Servo ', _teta)
-        coxa_servo.move_prepare(_teta)
+
+        _angCoxa = _angCoxa /0.24
+        print ('Perna ', perna, ' Coxa_Servo ', _angCoxa)
+        coxa_servo.move_prepare(_angCoxa)
+
         controller_1.move_start()
 
         _alpha = (180 - _alpha)/0.24
@@ -96,15 +99,15 @@ def moveLeg(perna, _teta, _alpha, _beta ) :
         print ('Perna ', perna, ' Tibia_Servo ', _beta)
         tibia_servo.move_prepare(_beta)
         controller_1.move_start()
-
-
     if perna == 6 :
         coxa_servo = controller_1.servo(16)
         femour_servo = controller_1.servo(17)
         tibia_servo = controller_1.servo(18)
-        _teta = (180 - _teta)/0.24
-        print ('Perna ', perna, ' Coxa_Servo ', _teta)
-        coxa_servo.move_prepare(_teta)
+
+
+        _angCoxa = _angCoxa /0.24
+        print ('Perna ', perna, ' Coxa_Servo ', _angCoxa)
+        coxa_servo.move_prepare(_angCoxa)
         controller_1.move_start()
 
         _alpha = (180 - _alpha)/0.24
@@ -116,17 +119,19 @@ def moveLeg(perna, _teta, _alpha, _beta ) :
         print ('Perna ', perna, ' Tibia_Servo ', _beta)
         tibia_servo.move_prepare(_beta)
         controller_1.move_start()
-
-
-
+    
     if perna == 1 :
         coxa_servo = controller_2.servo(1)
         femour_servo = controller_2.servo(2)
         tibia_servo = controller_2.servo(3)
-        _teta = (180 - _teta)/0.24
-        print ('Perna ', perna, ' Coxa_Servo ', _teta)
-        coxa_servo.move_prepare(_teta)
+ 
+        _angCoxa = _angCoxa /0.24
+        coxa_servo.move_prepare(_angCoxa)
+        print ('Perna ', perna, ' Coxa_Servo ', _angCoxa)
         controller_2.move_start()
+
+
+
 
         _alpha = (180 - _alpha)/0.24
         print ('Perna ', perna, ' Femour_Servo ', _alpha)
@@ -137,15 +142,19 @@ def moveLeg(perna, _teta, _alpha, _beta ) :
         print ('Perna ', perna, ' Tibia_Servo ', _beta)
         tibia_servo.move_prepare(_beta)
         controller_2.move_start()
-
     if perna == 3 :
         coxa_servo = controller_2.servo(7)
         femour_servo = controller_2.servo(8)
+
         tibia_servo = controller_2.servo(9)
-        _teta = (180 - _teta)/0.24
-        print ('Perna ', perna, ' Coxa_Servo ', _teta)
-        coxa_servo.move_prepare(_teta)
+
+        _angCoxa = _angCoxa /0.24
+        coxa_servo.move_prepare(_angCoxa)
+        print ('Perna ', perna, ' Coxa_Servo ', _angCoxa)
         controller_2.move_start()
+
+
+
 
         _alpha = (180 - _alpha)/0.24
         print ('Perna ', perna, ' Femour_Servo ', _alpha)
@@ -156,15 +165,17 @@ def moveLeg(perna, _teta, _alpha, _beta ) :
         print ('Perna ', perna, ' Tibia_Servo ', _beta)
         tibia_servo.move_prepare(_beta)
         controller_2.move_start()
-
-
     if perna == 5 :
         coxa_servo = controller_2.servo(13)
         femour_servo = controller_2.servo(14)
         tibia_servo = controller_2.servo(15)
-        _teta = (180 - _teta)/0.24
-        print ('Perna ', perna, ' Coxa_Servo ', _teta)
-        coxa_servo.move_prepare(_teta)
+
+
+
+        _angCoxa = _angCoxa /0.24
+        print ('Perna ', perna, ' Coxa_Servo ', _angCoxa)
+        coxa_servo.move_prepare(_angCoxa)
+
         controller_2.move_start()
 
         _alpha = (180 - _alpha)/0.24
@@ -180,13 +191,23 @@ def moveLeg(perna, _teta, _alpha, _beta ) :
 _teta , _alpha, _beta = _ik(6,12,6)
 
 
-moveLeg(1,_teta,_alpha,_beta)
-moveLeg(2,_teta,_alpha,_beta)
+def gait (leg, _AngCoxa,_AngFemour, _AngTibia):
 
-moveLeg(3,_teta,_alpha,_beta)
-moveLeg(4,_teta,_alpha,_beta)
+    if perna == 2 :
+        coxa_servo = controller_1.servo(4)
+        femour_servo = controller_1.servo(5)
+        tibia_servo = controller_1.servo(6)
+        
+        print ('Perna ', perna, ' Coxa_Servo ', _angCoxa)
+        coxa_servo.move_prepare(_angCoxa)
+        controller_1.move_start()
 
-moveLeg(5,_teta,_alpha,_beta)
-moveLeg(6,_teta,_alpha,_beta)
+        _alpha = (180 - _alpha)/0.24
+        print ('Perna ', perna, ' Femour_Servo ', _AngFemour)
+        femour_servo.move_prepare(_AngFemour)
+        controller_1.move_start()
 
-
+        _beta = (180 - _beta)/0.24
+        print ('Perna ', perna, ' Tibia_Servo ', _AngTibia)
+        tibia_servo.move_prepare(_AngTibia)
+        controller_1.move_start()
